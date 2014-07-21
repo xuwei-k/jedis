@@ -12,83 +12,83 @@ public class HostAndPortUtil {
     private static List<HostAndPort> clusterHostAndPortList = new ArrayList<HostAndPort>();
 
     static {
-	redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT));
-	redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 1));
-	redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 2));
-	redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 3));
-	redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 4));
-	redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 5));
-	redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 6));
+        redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT));
+        redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 1));
+        redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 2));
+        redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 3));
+        redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 4));
+        redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 5));
+        redisHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_PORT + 6));
 
-	sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT));
-	sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT + 1));
-	sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT + 2));
+        sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT));
+        sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT + 1));
+        sentinelHostAndPortList.add(new HostAndPort("localhost", Protocol.DEFAULT_SENTINEL_PORT + 2));
 
-	clusterHostAndPortList.add(new HostAndPort("localhost", 7379));
-	clusterHostAndPortList.add(new HostAndPort("localhost", 7380));
-	clusterHostAndPortList.add(new HostAndPort("localhost", 7381));
-	clusterHostAndPortList.add(new HostAndPort("localhost", 7382));
-	clusterHostAndPortList.add(new HostAndPort("localhost", 7383));
-	clusterHostAndPortList.add(new HostAndPort("localhost", 7384));
-	clusterHostAndPortList.add(new HostAndPort("localhost", 7385));
+        clusterHostAndPortList.add(new HostAndPort("localhost", 7379));
+        clusterHostAndPortList.add(new HostAndPort("localhost", 7380));
+        clusterHostAndPortList.add(new HostAndPort("localhost", 7381));
+        clusterHostAndPortList.add(new HostAndPort("localhost", 7382));
+        clusterHostAndPortList.add(new HostAndPort("localhost", 7383));
+        clusterHostAndPortList.add(new HostAndPort("localhost", 7384));
+        clusterHostAndPortList.add(new HostAndPort("localhost", 7385));
 
 
         final String envRedisHosts = "localhost:6379,localhost:6380,localhost:6381,localhost:6382,localhost:6383,localhost:6384,localhost:6385";
         final String envSentinelHosts = "localhost:26379,localhost:26380,localhost:26381";
         final String envClusterHosts = "localhost:7379,localhost:7380,localhost:7381,localhost:7382,localhost:7383,localhost:7384,localhost:7385";
 
-	redisHostAndPortList = parseHosts(envRedisHosts, redisHostAndPortList);
-	sentinelHostAndPortList = parseHosts(envSentinelHosts,
-		sentinelHostAndPortList);
-	clusterHostAndPortList = parseHosts(envClusterHosts,
-		clusterHostAndPortList);
+        redisHostAndPortList = parseHosts(envRedisHosts, redisHostAndPortList);
+        sentinelHostAndPortList = parseHosts(envSentinelHosts,
+                sentinelHostAndPortList);
+        clusterHostAndPortList = parseHosts(envClusterHosts,
+                clusterHostAndPortList);
     }
 
     public static List<HostAndPort> parseHosts(String envHosts,
-	    List<HostAndPort> existingHostsAndPorts) {
+                                               List<HostAndPort> existingHostsAndPorts) {
 
-	if (null != envHosts && 0 < envHosts.length()) {
+        if (null != envHosts && 0 < envHosts.length()) {
 
-	    String[] hostDefs = envHosts.split(",");
+            String[] hostDefs = envHosts.split(",");
 
-	    if (null != hostDefs && 2 <= hostDefs.length) {
+            if (null != hostDefs && 2 <= hostDefs.length) {
 
-		List<HostAndPort> envHostsAndPorts = new ArrayList<HostAndPort>(
-			hostDefs.length);
+                List<HostAndPort> envHostsAndPorts = new ArrayList<HostAndPort>(
+                        hostDefs.length);
 
-		for (String hostDef : hostDefs) {
+                for (String hostDef : hostDefs) {
 
-		    String[] hostAndPort = hostDef.split(":");
+                    String[] hostAndPort = hostDef.split(":");
 
-		    if (null != hostAndPort && 2 == hostAndPort.length) {
-			String host = hostAndPort[0];
-			int port = Protocol.DEFAULT_PORT;
+                    if (null != hostAndPort && 2 == hostAndPort.length) {
+                        String host = hostAndPort[0];
+                        int port = Protocol.DEFAULT_PORT;
 
-			try {
-			    port = Integer.parseInt(hostAndPort[1]);
-			} catch (final NumberFormatException nfe) {
-			}
+                        try {
+                            port = Integer.parseInt(hostAndPort[1]);
+                        } catch (final NumberFormatException nfe) {
+                        }
 
-			envHostsAndPorts.add(new HostAndPort(host, port));
-		    }
-		}
+                        envHostsAndPorts.add(new HostAndPort(host, port));
+                    }
+                }
 
-		return envHostsAndPorts;
-	    }
-	}
+                return envHostsAndPorts;
+            }
+        }
 
-	return existingHostsAndPorts;
+        return existingHostsAndPorts;
     }
 
     public static List<HostAndPort> getRedisServers() {
-	return redisHostAndPortList;
+        return redisHostAndPortList;
     }
 
     public static List<HostAndPort> getSentinelServers() {
-	return sentinelHostAndPortList;
+        return sentinelHostAndPortList;
     }
 
     public static List<HostAndPort> getClusterServers() {
-	return clusterHostAndPortList;
+        return clusterHostAndPortList;
     }
 }
