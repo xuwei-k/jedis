@@ -12,19 +12,19 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 import redis.clients.util.Pool;
 
-public class JedisSentinelPool extends Pool<Jedis> {
+public final class JedisSentinelPool extends Pool<Jedis> {
 
-    protected GenericObjectPoolConfig poolConfig;
+    private final GenericObjectPoolConfig poolConfig;
 
     protected int timeout = Protocol.DEFAULT_TIMEOUT;
 
-    protected String password;
+    protected final String password;
 
     protected int database = Protocol.DEFAULT_DATABASE;
 
-    protected Set<MasterListener> masterListeners = new HashSet<MasterListener>();
+    protected final Set<MasterListener> masterListeners = new HashSet<>();
 
-    protected Logger log = Logger.getLogger(getClass().getName());
+    protected final Logger log = Logger.getLogger(getClass().getName());
 
     public JedisSentinelPool(String masterName, Set<String> sentinels,
                              final GenericObjectPoolConfig poolConfig) {

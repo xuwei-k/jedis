@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class Sharded<R, S extends ShardInfo<R>> {
 
     public static final int DEFAULT_WEIGHT = 1;
-    private TreeMap<Long, S> nodes;
+    private final TreeMap<Long, S> nodes = new TreeMap<>();
     private final Hashing algo;
     private final Map<ShardInfo<R>, R> resources = new LinkedHashMap<ShardInfo<R>, R>();
 
@@ -51,8 +51,6 @@ public class Sharded<R, S extends ShardInfo<R>> {
     }
 
     private void initialize(List<S> shards) {
-        nodes = new TreeMap<Long, S>();
-
         for (int i = 0; i != shards.size(); ++i) {
             final S shardInfo = shards.get(i);
             if (shardInfo.getName() == null)

@@ -1,10 +1,10 @@
 package redis.clients.jedis;
 
-public class HostAndPort {
+public final class HostAndPort {
     public static final String LOCALHOST_STR = "localhost";
 
-    private String host;
-    private int port;
+    private final String host;
+    private final int port;
 
     public HostAndPort(String host, int port) {
         this.host = host;

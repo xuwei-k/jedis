@@ -10,9 +10,9 @@ import redis.clients.util.JedisClusterCRC16;
 
 public abstract class JedisClusterCommand<T> {
 
-    private JedisClusterConnectionHandler connectionHandler;
-    private int commandTimeout;
-    private int redirections;
+    private final JedisClusterConnectionHandler connectionHandler;
+    private final int commandTimeout;
+    private final int redirections;
 
     public JedisClusterCommand(JedisClusterConnectionHandler connectionHandler,
                                int timeout, int maxRedirections) {

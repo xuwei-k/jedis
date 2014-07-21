@@ -2,7 +2,7 @@ package redis.clients.util;
 
 import redis.clients.jedis.HostAndPort;
 
-public class ClusterNodeInformationParser {
+public final class ClusterNodeInformationParser {
     private static final String SLOT_IMPORT_IDENTIFIER = "-<-";
     private static final String SLOT_IN_TRANSITION_IDENTIFIER = "[";
     public static final int SLOT_INFORMATIONS_START_INDEX = 8;

@@ -5,11 +5,11 @@ import redis.clients.jedis.HostAndPort;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClusterNodeInformation {
-    private HostAndPort node;
-    private List<Integer> availableSlots;
-    private List<Integer> slotsBeingImported;
-    private List<Integer> slotsBeingMigrated;
+public final class ClusterNodeInformation {
+    private final HostAndPort node;
+    private final List<Integer> availableSlots;
+    private final List<Integer> slotsBeingImported;
+    private final List<Integer> slotsBeingMigrated;
 
     public ClusterNodeInformation(HostAndPort node) {
         this.node = node;

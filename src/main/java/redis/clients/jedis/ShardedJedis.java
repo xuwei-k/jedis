@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 import redis.clients.util.Pool;
 
-public class ShardedJedis extends BinaryShardedJedis implements JedisCommands,
+public final class ShardedJedis extends BinaryShardedJedis implements JedisCommands,
         Closeable {
 
     protected Pool<ShardedJedis> dataSource = null;

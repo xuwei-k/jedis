@@ -5,14 +5,14 @@ import java.net.URI;
 import redis.clients.util.ShardInfo;
 import redis.clients.util.Sharded;
 
-public class JedisShardInfo extends ShardInfo<Jedis> {
+public final class JedisShardInfo extends ShardInfo<Jedis> {
     public String toString() {
         return host + ":" + port + "*" + getWeight();
     }
 
     private int timeout;
-    private String host;
-    private int port;
+    private final String host;
+    private final int port;
     private String password = null;
     private String name = null;
 

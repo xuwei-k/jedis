@@ -4,9 +4,9 @@ import java.util.List;
 
 import redis.clients.util.SafeEncoder;
 
-public class ScanResult<T> {
-    private byte[] cursor;
-    private List<T> results;
+public final class ScanResult<T> {
+    private final byte[] cursor;
+    private final List<T> results;
 
     @Deprecated
     /**

@@ -11,7 +11,8 @@ import java.util.Set;
 
 import redis.clients.util.SafeEncoder;
 
-public class BuilderFactory {
+public final class BuilderFactory {
+    private BuilderFactory(){}
     public static final Builder<Double> DOUBLE = new Builder<Double>() {
         public Double build(Object data) {
             String asString = STRING.build(data);

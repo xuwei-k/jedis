@@ -7,15 +7,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class JedisCluster implements JedisCommands, BasicCommands {
+public final class JedisCluster implements JedisCommands, BasicCommands {
     public static final short HASHSLOTS = 16384;
     private static final int DEFAULT_TIMEOUT = 1;
     private static final int DEFAULT_MAX_REDIRECTIONS = 5;
 
-    private int timeout;
-    private int maxRedirections;
+    private final int timeout;
+    private final int maxRedirections;
 
-    private JedisClusterConnectionHandler connectionHandler;
+    private final JedisClusterConnectionHandler connectionHandler;
 
     public JedisCluster(Set<HostAndPort> nodes, int timeout) {
         this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS);

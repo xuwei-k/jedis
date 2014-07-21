@@ -9,7 +9,7 @@ import java.net.URI;
 import java.util.*;
 import java.util.Map.Entry;
 
-public class Jedis extends BinaryJedis implements JedisCommands,
+public final class Jedis extends BinaryJedis implements JedisCommands,
         MultiKeyCommands, AdvancedJedisCommands, ScriptingCommands,
         BasicCommands, ClusterCommands {
 

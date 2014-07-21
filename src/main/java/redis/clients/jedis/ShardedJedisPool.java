@@ -11,7 +11,7 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.util.Hashing;
 import redis.clients.util.Pool;
 
-public class ShardedJedisPool extends Pool<ShardedJedis> {
+public final class ShardedJedisPool extends Pool<ShardedJedis> {
     public ShardedJedisPool(final GenericObjectPoolConfig poolConfig,
                             List<JedisShardInfo> shards) {
         this(poolConfig, shards, Hashing.MURMUR_HASH);

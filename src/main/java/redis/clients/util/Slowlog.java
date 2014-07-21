@@ -3,7 +3,7 @@ package redis.clients.util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Slowlog {
+public final class Slowlog {
     private final long id;
     private final long timeStamp;
     private final long executionTime;
@@ -11,7 +11,7 @@ public class Slowlog {
 
     @SuppressWarnings("unchecked")
     public static List<Slowlog> from(List<Object> nestedMultiBulkReply) {
-        List<Slowlog> logs = new ArrayList<Slowlog>(nestedMultiBulkReply.size());
+        List<Slowlog> logs = new ArrayList<>(nestedMultiBulkReply.size());
         for (Object obj : nestedMultiBulkReply) {
             List<Object> properties = (List<Object>) obj;
             logs.add(new Slowlog(properties));
@@ -28,7 +28,7 @@ public class Slowlog {
         this.executionTime = (Long) properties.get(2);
 
         List<byte[]> bargs = (List<byte[]>) properties.get(3);
-        this.args = new ArrayList<String>(bargs.size());
+        this.args = new ArrayList<>(bargs.size());
 
         for (byte[] barg : bargs) {
             this.args.add(SafeEncoder.encode(barg));

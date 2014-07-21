@@ -10,7 +10,7 @@ import java.util.List;
 
 import redis.clients.util.SafeEncoder;
 
-public class ZParams {
+public final class ZParams {
     public enum Aggregate {
         SUM, MIN, MAX;
 
@@ -21,7 +21,7 @@ public class ZParams {
         }
     }
 
-    private List<byte[]> params = new ArrayList<byte[]>();
+    private final List<byte[]> params = new ArrayList<>();
 
     public ZParams weights(final int... weights) {
         params.add(WEIGHTS.raw);

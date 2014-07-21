@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 import redis.clients.util.SafeEncoder;
 
-public class Tuple implements Comparable<Tuple> {
-    private byte[] element;
-    private Double score;
+public final class Tuple implements Comparable<Tuple> {
+    private final byte[] element;
+    private final Double score;
 
     public int hashCode() {
         final int prime = 31;

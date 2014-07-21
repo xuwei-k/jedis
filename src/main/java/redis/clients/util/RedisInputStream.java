@@ -22,11 +22,11 @@ import java.io.InputStream;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
-public class RedisInputStream extends FilterInputStream {
+public final class RedisInputStream extends FilterInputStream {
 
     protected final byte buf[];
 
-    protected int count, limit;
+    private int count, limit;
 
     public RedisInputStream(InputStream in, int size) {
         super(in);

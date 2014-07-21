@@ -9,10 +9,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class JedisByteHashMap implements Map<byte[], byte[]>, Cloneable,
+public final class JedisByteHashMap implements Map<byte[], byte[]>, Cloneable,
         Serializable {
     private static final long serialVersionUID = -6971431362627219416L;
-    private Map<ByteArrayWrapper, byte[]> internalMap = new HashMap<ByteArrayWrapper, byte[]>();
+    private final Map<ByteArrayWrapper, byte[]> internalMap = new HashMap<>();
 
     public void clear() {
         internalMap.clear();
@@ -112,7 +112,7 @@ public class JedisByteHashMap implements Map<byte[], byte[]>, Cloneable,
 
     private static final class JedisByteEntry implements Entry<byte[], byte[]> {
         private byte[] value;
-        private byte[] key;
+        private final byte[] key;
 
         public JedisByteEntry(byte[] key, byte[] value) {
             this.key = key;

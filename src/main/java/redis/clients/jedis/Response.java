@@ -2,11 +2,11 @@ package redis.clients.jedis;
 
 import redis.clients.jedis.exceptions.JedisDataException;
 
-public class Response<T> {
+public final class Response<T> {
     protected T response = null;
     private boolean built = false;
     private boolean set = false;
-    private Builder<T> builder;
+    private final Builder<T> builder;
     private Object data;
     private Response<?> dependency = null;
     private boolean requestDependencyBuild = false;

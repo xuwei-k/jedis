@@ -7,10 +7,10 @@ import redis.clients.util.ClusterNodeInformation;
 import redis.clients.util.ClusterNodeInformationParser;
 
 public abstract class JedisClusterConnectionHandler {
-    public static ClusterNodeInformationParser nodeInfoParser = new ClusterNodeInformationParser();
+    public final static ClusterNodeInformationParser nodeInfoParser = new ClusterNodeInformationParser();
 
-    protected Map<String, JedisPool> nodes = new HashMap<String, JedisPool>();
-    protected Map<Integer, JedisPool> slots = new HashMap<Integer, JedisPool>();
+    protected final Map<String, JedisPool> nodes = new HashMap<>();
+    protected final Map<Integer, JedisPool> slots = new HashMap<>();
 
     abstract Jedis getConnection();
 

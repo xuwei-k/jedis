@@ -9,7 +9,7 @@ import redis.clients.jedis.exceptions.JedisException;
 /**
  * The only reason to have this is to be able to compatible with java 1.5 :(
  */
-public class SafeEncoder {
+public final class SafeEncoder {
     public static byte[][] encodeMany(final String... strs) {
         byte[][] many = new byte[strs.length][];
         for (int i = 0; i < strs.length; i++) {

@@ -7,7 +7,7 @@ import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 import redis.clients.util.Pool;
 
-public class JedisPool extends Pool<Jedis> {
+public final class JedisPool extends Pool<Jedis> {
 
     public JedisPool(final GenericObjectPoolConfig poolConfig, final String host) {
         this(poolConfig, host, Protocol.DEFAULT_PORT, Protocol.DEFAULT_TIMEOUT,
