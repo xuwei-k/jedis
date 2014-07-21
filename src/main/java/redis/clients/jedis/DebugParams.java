@@ -4,7 +4,7 @@ public class DebugParams {
     private String[] command;
 
     public String[] getCommand() {
-	return command;
+        return command;
     }
 
     private DebugParams() {
@@ -12,20 +12,20 @@ public class DebugParams {
     }
 
     public static DebugParams SEGFAULT() {
-	DebugParams debugParams = new DebugParams();
-	debugParams.command = new String[] { "SEGFAULT" };
-	return debugParams;
+        DebugParams debugParams = new DebugParams();
+        debugParams.command = new String[]{"SEGFAULT"};
+        return debugParams;
     }
 
     public static DebugParams OBJECT(String key) {
-	DebugParams debugParams = new DebugParams();
-	debugParams.command = new String[] { "OBJECT", key };
-	return debugParams;
+        DebugParams debugParams = new DebugParams();
+        debugParams.command = new String[]{"OBJECT", key};
+        return debugParams;
     }
 
     public static DebugParams RELOAD() {
-	DebugParams debugParams = new DebugParams();
-	debugParams.command = new String[] { "RELOAD" };
-	return debugParams;
+        DebugParams debugParams = new DebugParams();
+        debugParams.command = new String[]{"RELOAD"};
+        return debugParams;
     }
 }

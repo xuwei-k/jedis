@@ -67,7 +67,7 @@ public interface RedisPipeline {
     Response<String> lindex(String key, long index);
 
     Response<Long> linsert(String key, BinaryClient.LIST_POSITION where,
-	    String pivot, String value);
+                           String pivot, String value);
 
     Response<Long> llen(String key);
 
@@ -146,26 +146,26 @@ public interface RedisPipeline {
     Response<Set<String>> zrangeByScore(String key, String min, String max);
 
     Response<Set<String>> zrangeByScore(String key, double min, double max,
-	    int offset, int count);
+                                        int offset, int count);
 
     Response<Set<Tuple>> zrangeByScoreWithScores(String key, double min,
-	    double max);
+                                                 double max);
 
     Response<Set<Tuple>> zrangeByScoreWithScores(String key, double min,
-	    double max, int offset, int count);
+                                                 double max, int offset, int count);
 
     Response<Set<String>> zrevrangeByScore(String key, double max, double min);
 
     Response<Set<String>> zrevrangeByScore(String key, String max, String min);
 
     Response<Set<String>> zrevrangeByScore(String key, double max, double min,
-	    int offset, int count);
+                                           int offset, int count);
 
     Response<Set<Tuple>> zrevrangeByScoreWithScores(String key, double max,
-	    double min);
+                                                    double min);
 
     Response<Set<Tuple>> zrevrangeByScoreWithScores(String key, double max,
-	    double min, int offset, int count);
+                                                    double min, int offset, int count);
 
     Response<Set<Tuple>> zrangeWithScores(String key, long start, long end);
 
@@ -188,8 +188,8 @@ public interface RedisPipeline {
     Response<Long> bitcount(String key);
 
     Response<Long> bitcount(String key, long start, long end);
-    
+
     Response<Long> pfadd(final String key, final String... elements);
-    
+
     Response<Long> pfcount(final String key);
 }

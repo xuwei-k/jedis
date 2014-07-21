@@ -12,16 +12,16 @@ public class BitPosParams {
     }
 
     public BitPosParams(long start) {
-	params.add(Protocol.toByteArray(start));
+        params.add(Protocol.toByteArray(start));
     }
 
     public BitPosParams(long start, long end) {
-	this(start);
-	
-	params.add(Protocol.toByteArray(end));
+        this(start);
+
+        params.add(Protocol.toByteArray(end));
     }
 
     public Collection<byte[]> getParams() {
-	return Collections.unmodifiableCollection(params);
+        return Collections.unmodifiableCollection(params);
     }
 }

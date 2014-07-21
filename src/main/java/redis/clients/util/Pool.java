@@ -18,74 +18,74 @@ public abstract class Pool<T> {
     }
 
     public Pool(final GenericObjectPoolConfig poolConfig,
-	    PooledObjectFactory<T> factory) {
-	initPool(poolConfig, factory);
+                PooledObjectFactory<T> factory) {
+        initPool(poolConfig, factory);
     }
 
     public void initPool(final GenericObjectPoolConfig poolConfig,
-	    PooledObjectFactory<T> factory) {
+                         PooledObjectFactory<T> factory) {
 
-	if (this.internalPool != null) {
-	    try {
-		closeInternalPool();
-	    } catch (Exception e) {
-	    }
-	}
+        if (this.internalPool != null) {
+            try {
+                closeInternalPool();
+            } catch (Exception e) {
+            }
+        }
 
-	this.internalPool = new GenericObjectPool<T>(factory, poolConfig);
+        this.internalPool = new GenericObjectPool<T>(factory, poolConfig);
     }
 
     public T getResource() {
-	try {
-	    return internalPool.borrowObject();
-	} catch (Exception e) {
-	    throw new JedisConnectionException(
-		    "Could not get a resource from the pool", e);
-	}
+        try {
+            return internalPool.borrowObject();
+        } catch (Exception e) {
+            throw new JedisConnectionException(
+                    "Could not get a resource from the pool", e);
+        }
     }
 
     public void returnResourceObject(final T resource) {
-	if (resource == null) {
-	    return;
-	}
-	try {
-	    internalPool.returnObject(resource);
-	} catch (Exception e) {
-	    throw new JedisException(
-		    "Could not return the resource to the pool", e);
-	}
+        if (resource == null) {
+            return;
+        }
+        try {
+            internalPool.returnObject(resource);
+        } catch (Exception e) {
+            throw new JedisException(
+                    "Could not return the resource to the pool", e);
+        }
     }
 
     public void returnBrokenResource(final T resource) {
-	if (resource != null) {
-	    returnBrokenResourceObject(resource);
-	}
+        if (resource != null) {
+            returnBrokenResourceObject(resource);
+        }
     }
 
     public void returnResource(final T resource) {
-	if (resource != null) {
-	    returnResourceObject(resource);
-	}
+        if (resource != null) {
+            returnResourceObject(resource);
+        }
     }
 
     public void destroy() {
-	closeInternalPool();
+        closeInternalPool();
     }
 
     protected void returnBrokenResourceObject(final T resource) {
-	try {
-	    internalPool.invalidateObject(resource);
-	} catch (Exception e) {
-	    throw new JedisException(
-		    "Could not return the resource to the pool", e);
-	}
+        try {
+            internalPool.invalidateObject(resource);
+        } catch (Exception e) {
+            throw new JedisException(
+                    "Could not return the resource to the pool", e);
+        }
     }
 
     protected void closeInternalPool() {
-	try {
-	    internalPool.close();
-	} catch (Exception e) {
-	    throw new JedisException("Could not destroy the pool", e);
-	}
+        try {
+            internalPool.close();
+        } catch (Exception e) {
+            throw new JedisException("Could not destroy the pool", e);
+        }
     }
 }

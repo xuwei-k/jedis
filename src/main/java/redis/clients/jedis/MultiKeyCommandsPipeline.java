@@ -39,7 +39,7 @@ public interface MultiKeyCommandsPipeline {
     Response<Long> smove(String srckey, String dstkey, String member);
 
     Response<Long> sort(String key, SortingParams sortingParameters,
-	    String dstkey);
+                        String dstkey);
 
     Response<Long> sort(String key, String dstkey);
 
@@ -64,8 +64,8 @@ public interface MultiKeyCommandsPipeline {
     Response<String> randomKey();
 
     Response<Long> bitop(BitOP op, final String destKey, String... srcKeys);
-    
+
     Response<String> pfmerge(final String destkey, final String... sourcekeys);
 
-    Response<Long> pfcount(final String...keys);
+    Response<Long> pfcount(final String... keys);
 }

@@ -9,31 +9,31 @@ public class JedisRedirectionException extends JedisDataException {
     private int slot;
 
     public JedisRedirectionException(String message, HostAndPort targetNode,
-	    int slot) {
-	super(message);
-	this.targetNode = targetNode;
-	this.slot = slot;
+                                     int slot) {
+        super(message);
+        this.targetNode = targetNode;
+        this.slot = slot;
     }
 
     public JedisRedirectionException(Throwable cause, HostAndPort targetNode,
-	    int slot) {
-	super(cause);
-	this.targetNode = targetNode;
-	this.slot = slot;
+                                     int slot) {
+        super(cause);
+        this.targetNode = targetNode;
+        this.slot = slot;
     }
 
     public JedisRedirectionException(String message, Throwable cause,
-	    HostAndPort targetNode, int slot) {
-	super(message, cause);
-	this.targetNode = targetNode;
-	this.slot = slot;
+                                     HostAndPort targetNode, int slot) {
+        super(message, cause);
+        this.targetNode = targetNode;
+        this.slot = slot;
     }
 
     public HostAndPort getTargetNode() {
-	return targetNode;
+        return targetNode;
     }
 
     public int getSlot() {
-	return slot;
+        return slot;
     }
 }

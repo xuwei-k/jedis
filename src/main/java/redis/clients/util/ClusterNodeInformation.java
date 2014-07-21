@@ -12,8 +12,8 @@ public class ClusterNodeInformation {
     private List<Integer> slotsBeingMigrated;
 
     public ClusterNodeInformation(HostAndPort node) {
-	this.node = node;
-	this.availableSlots = new ArrayList<Integer>();
+        this.node = node;
+        this.availableSlots = new ArrayList<Integer>();
         this.slotsBeingImported = new ArrayList<Integer>();
         this.slotsBeingMigrated = new ArrayList<Integer>();
     }
